@@ -1,0 +1,108 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Video SSP Header Bidding Outstream Renderer</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Step 1: Please contact OneVideo to set up your Account for Video Header Bidding -->
+    <!-- Step 2: Download prebid.js version +2.23.0 including the OneVideo Adaptor from http://prebid.org/download.html -->
+    <!-- Step 3: Host and link your prebid.js file in the page <head> -->
+    <script src="./prebid2.23.0.js"></script>
+
+    <!-- Step 4: Declare your prebid.js Objects and Ad Units -->
+    <script>
+        var pbjs = pbjs || {};
+        pbjs.que = pbjs.que || [];
+        pbjs.setConfig({ useBidCache: true });
+        let PREBID_TIMEOUT = 1000;
+
+        //Decalre your ad units and bidders here
+        const videoAdUnits = [{
+            //Make sure your adUnit code is identical to your Outstream container element id.
+            code: 'video1',
+            mediaTypes: {
+                video: {
+                    context: 'outstream',
+                    playerSize: [640, 480]
+                }
+            },
+            bids: [
+                {
+                    bidder: 'oneVideo',
+                    params: {
+                        //Optional: Define a bidding floor price.
+                        Bidfloor: 10,
+                        video: {
+                            //Make sure the playerWidth is identical to the width of your Outstream container element
+                            playerWidth: 640,
+                            playerHeight: 480,
+                            mimes: ['video/mp4', 'application/javascript'],
+                            protocols: [2, 5],
+                            api: [1,2],
+                            delivery: [2]
+                        },
+                        //Replace the following Publisher_ID with the one provided to you in step 1.
+                        pubId: 'Publisher_ID'
+                    }
+                }
+            ]
+        }];
+    </script>
+
+
+
+</head>
+
+<body>
+    <div class="container">
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>    
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p class="red"> ==== Below this paragraph is the element that will nest the Outstream unit ====</p>
+
+        
+        <!-- Step 5: Designate the element that will contain the Outstream ad Unit for auction -->
+        <div id="video1" style="width:640px;"></div>
+
+        <!--Step 6: Invoke prebid.js. Note that usually this part is located right after the adUnit object in the page head but was relocated here for instructional steps -->
+        <script>
+            
+                pbjs.que.push(function() {
+                    pbjs.addAdUnits(videoAdUnits)
+                    pbjs.requestBids({
+                        timeout: 2000,
+                        bidsBackHandler: function(bids) {
+                            //Make sure you are passing the adUnit code value as the .getHighestCpmBids() argument, e.g. .getHighestCpmBids('video1')
+                            let highestCpmBids = pbjs.getHighestCpmBids('video1');
+                            pbjs.renderAd(document, highestCpmBids[0].adId);
+                            }
+                        })
+                    });    
+        </script>  
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+        <p>Verizon Media Video SSP Header Bidding Outstream Renderer Solution</p>
+
+    </div>
+</body>
+
+</html>
+<script>
